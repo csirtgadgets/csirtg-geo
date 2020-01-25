@@ -1,0 +1,12 @@
+include versioneer.py
+include .coveragerc
+include README.md COPYING LICENSE
+include requirements.txt dev_requirements.txt
+include VERSION
+include MANIFEST.in
+include versioneer.py
+include csirtg_geo/_version.py
+recursive-include test *
+global-exclude *.retry
+global-exclude *.pyc
+global-exclude __pycache__include csirtg_geo/_version.py
