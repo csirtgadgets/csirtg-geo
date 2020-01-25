@@ -94,6 +94,9 @@ Arguments:
     except ValueError as e:
         return city
 
+    if not asn:
+        return {}
+
     asn.update(city)
     return asn
 
