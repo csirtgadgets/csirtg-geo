@@ -19,7 +19,8 @@ if sys.argv[-1] == 'test':
         msg = "%s is not installed. Install your test requirements." % err_msg
         raise ImportError(msg)
 
-    r = os.system('py.test test -v --cov=csirtg_geo --cov-fail-under=0 --pep8')
+    r = os.system('py.test test -sv --cov=csirtg_geo --cov-fail-under=75 '
+                  '--pep8')
 
     if r == 0:
         sys.exit()
