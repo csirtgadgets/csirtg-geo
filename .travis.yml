@@ -6,6 +6,14 @@ python:
 - 3.7
 - 3.8
 before_install:
+- sudo add-apt-repository -y ppa:maxmind/ppa
+- sudo apt-get update
+- sudo apt-get install geoipupdate
+- sudo rm -f /etc/GeoIP.conf
+- echo "UserId $MM_USERID" | sudo tee /etc/GeoIP.conf > /dev/null
+- echo "LicenseKey $MM_LIC" | sudo tee -a /etc/GeoIP.conf > /dev/null
+- echo 'ProductIds GeoLite2-Country GeoLite2-City GeoLite2-ASN' | sudo tee -a /etc/GeoIP.conf
+  > /dev/null
 - pip install -r dev_requirements.txt
 script:
 - python setup.py develop
@@ -24,3 +32,7 @@ deploy:
     condition: $TRAVIS_PYTHON_VERSION = "3.8"
   password:
     secure: MJq8KxqLT4R/QPNNZvgcqxtNOOvFLhYD0HGcrQxq4MLdUsQoa02cSREmUQb/9SmGfuAGu6Rj+4c0TyVhWNbmev8o0uS58IQ7rLfWT6Y0yyHAa1fUxU7N8fn9F1QvszkP15I4fBeo8re1L31WHNSfoKU53q+HuVIONrfnYE/ugxjSljHbv0YqqEjUPMsyG3xQJ4wrYIiaMA2aRpSHjEcHcKVyb2wV/FD2K+1J66mYvt0c1BAYqGqwiLMe3jWbeL6crDtS9qXGJZ6AIzySlDug+rj9GWw5gBmjL2iRNpk6Yb9lgPWpwP2WwMrG6FBeEQ2wY1MhEb8QhOxhXkyY5EkeTTw3eQKd2q+OW77x9dejmmfM4XggzxwLS+DAG+jZhT3fE6jec3zLp6X/Bax4kYZoXb5KIGkKU3I89a5xH8ln8FJDvDP09S0WxGMVsKuqSsdnJFAgh10NztuM8IyHDsS8hzkvJCcNYIPsM/zplW1hhtJRvc4Ghi5lH7BfzaW13nRXdWa5BMZeejUfoGfWxPZt3t2TQ25h0ObPNPKgdZPbqKK8HZukW2h2wwz8jpoyEB9dIPx3iDt4zS/+LD6JqtfYJUkK+nZ1pHgiGjTvUQpyMYPly79S+Qe0DllpFOI32vf4C4c/bD7doAEXYkgawLFEQiuQVN5KSzP3v5ZrFPPI+oE=
+env:
+  global:
+  - secure: L8sPL+wkcEXwqnekNoPhSLIzpJEdSCVETgzL/RWe575dHVXUBRG4xb7F//du5cK0avaohwbh+4YPGJpN1cfCum1XZOZHicuj6ttrKgaSsV2zl7e9rCnwDTb8nN6MZ1aLrRuHPqsKit7cZnAxhgBG/IqKmoK2WNNcAIKIeKxysdIFjxaml/pcPhAVAhjtkjvL8sLzCyQFV1882hzGo3m5zWsIN4J+fa3e+vaOv5Ble9G4Tp+QFqQgxCcl29fYXTZY5yfdzG6YvLZ8d+3FjK0fJJL2FOB6VUWPPGPS065zzWaqkDi63VPdvefiVKG/H0p3l16vvQ0VyDXhn6Z7HiE5mpa+OUHgE4LiFhzA6fUTsvPDsdnp+t2AQpAfKJUl9NFDnPK7cJy3EFeaAXLNfZ+K3RLCkVCqFtoYN7LTWGRvVXvy+lkMJ8/BNcahwGoCpC5tUP3Cr8QuMWt7LE1jR/+yp5Gh60mXuL4BQfLJ9j10kWuxw/pl8LbTeBz4tX/C4O+KJR88ODVwcbPBxMrXpRBcMiWdVO2S3XgFkgqKY3/09OopqnCB/k4MyQhNUyu3W05EMtLTIuqZIb0gM6nvXlWhR1HDO8dUMKkJmQn2IXkPBBPZLldq4o10Oy3TCgfEgwVZWR5znxfNHyDRLuwKGTQ4qS0d/8l+HHJdlHUXp9OEFa0=
+  - secure: SnZIWAyCyno620nCnOS/kDDBxcyqePJOixRPMF/svl79hP6gkAs81eE3kzc9linOS4Fjb5jWXQXQTC8WzFc9OiNSJtbnPjHY033Zsg0wC47NTaY+OlfJHPbGtMJIoJz1w2jfw9vcA30n2bw0GPQtncti0AMR/vsGQ4sxOqcweHT9FiUhEvjbOPk3Rd0fAh7rFVjSazU8d0zZrbKdpRMDkX0YJRTd/V1oxJ4yxsciTzmQ1/Gp8h8r+9nMvbtlSbe6uAE1ipdr1IHIPuf5Pl9paiJUHpnD2JKpPOfwwug5z31cqJGfsQuRfMjDBEREiIrlfuoD+gn9VPgZ8+3NKiQhR8fjEAZEwnutev19hxSuU1pBgGB8UKlqmXQmiUt53nGMr/Dtsw/YSkt8Xa/ECksfy3yNoosE7TFgjZQarODUhEgZ5W5L/AcR7bXWwPAamQ6FLACCKSj7oJ1oI1XV6vZ7qConHi4C305zJv1BKGSrtledDIfZ7V1ecfkbDN0o5SR8A6QwNHBZmVAgWWHwAnpB8GrbkZbwF+/0iYAhLTmXETxdo3bwBLNfHQyE1xDNGz2sKHAiZe4Cx398AJ0ctueqQEml0dExzZNPSU8bOdqoeNy14GwNObTZm6OnCFF9g71ZJpVXn50kFbCn71nxVZkcI7G+WpAIJg33JJ3bCrC8Y+8=
