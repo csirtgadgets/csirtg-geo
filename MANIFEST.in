@@ -9,4 +9,4 @@ include csirtg_geo/_version.py
 recursive-include test *
 global-exclude *.retry
 global-exclude *.pyc
-global-exclude __pycache__include csirtg_geo/_version.py
+global-exclude __pycache__
