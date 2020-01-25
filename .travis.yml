@@ -2,29 +2,25 @@ sudo: required
 language: python
 cache: pip
 python:
-  - 3.6
-  - 3.7
-  - 3.8
-
+- 3.6
+- 3.7
+- 3.8
 before_install:
-  - pip install -r dev_requirements.txt
-
+- pip install -r dev_requirements.txt
 script:
-  - python setup.py develop
-  - python setup.py test
-  - python setup.py sdist bdist bdist_wheel
-
+- python setup.py develop
+- python setup.py test
+- python setup.py sdist bdist bdist_wheel
 notifications:
   email:
     on_success: never
     on_failure: never
-
 deploy:
   provider: pypi
-  user: "__token__"
+  user: __token__
   on:
     branch: master
     tags: true
     condition: $TRAVIS_PYTHON_VERSION = "3.8"
   password:
-    secure: oZ9XlCwdLZ8kHAis6esXSVErX3Twob9hja14/9RsVSFaRW27UZZf4ISMjhTVfH9za3crZCKDqVGldYot8E/jR06JhMECNwt9E2Gq8j/BQucHMIdPd7JnMEyVTQwPSiH/dZSOFj6cESOOJFzyXrsmp+zrzXA43hXaeU0ilOYdLiXxGyxklglX2910YhQ2LQf5SMjMHGdzHjBQTG4gE0wB201LJBbsfqMbuIUFhjSU2j1agUuhyL07eTrK6SwQ4uPcssfAr552GTKYkBOFMEmOv6unST6kG5rx3KA6AMdqSeWucjG82xD48VM1Zi7dAhlUgrcZfQ6GVFMPZvjgouXmhB2HsMGWpZIcvDldL35Ti6OBEaAj80Ch+oFjkOLFKgjMVYC+5KOSCWGn5OpCg9vWQHUZzxLcjzVC3hxvzYUN3nNujhgrWn9tUKWp4u767EaJaGs9utOdYD9KIt60vkP+E668jU5kDF4ErSQlW22iEVSrBVo41YOpmna7s26DHoLV/iiD8nKm5vAxcaHFoiAAA9PoakArOKXXdbK8zz4ICXbOVcZvCMj0c+lbJztqizTDciuUMhMfAu+PtoxbEWXcvXuuIDMGwYgbXwkdUV+9wVWAlZrR6NVPsidT17ZID1wGLtyH2VvDks4lDuaJz3Re2GDMnTe4FUk2ScF/yU/ZZxw=
+    secure: MJq8KxqLT4R/QPNNZvgcqxtNOOvFLhYD0HGcrQxq4MLdUsQoa02cSREmUQb/9SmGfuAGu6Rj+4c0TyVhWNbmev8o0uS58IQ7rLfWT6Y0yyHAa1fUxU7N8fn9F1QvszkP15I4fBeo8re1L31WHNSfoKU53q+HuVIONrfnYE/ugxjSljHbv0YqqEjUPMsyG3xQJ4wrYIiaMA2aRpSHjEcHcKVyb2wV/FD2K+1J66mYvt0c1BAYqGqwiLMe3jWbeL6crDtS9qXGJZ6AIzySlDug+rj9GWw5gBmjL2iRNpk6Yb9lgPWpwP2WwMrG6FBeEQ2wY1MhEb8QhOxhXkyY5EkeTTw3eQKd2q+OW77x9dejmmfM4XggzxwLS+DAG+jZhT3fE6jec3zLp6X/Bax4kYZoXb5KIGkKU3I89a5xH8ln8FJDvDP09S0WxGMVsKuqSsdnJFAgh10NztuM8IyHDsS8hzkvJCcNYIPsM/zplW1hhtJRvc4Ghi5lH7BfzaW13nRXdWa5BMZeejUfoGfWxPZt3t2TQ25h0ObPNPKgdZPbqKK8HZukW2h2wwz8jpoyEB9dIPx3iDt4zS/+LD6JqtfYJUkK+nZ1pHgiGjTvUQpyMYPly79S+Qe0DllpFOI32vf4C4c/bD7doAEXYkgawLFEQiuQVN5KSzP3v5ZrFPPI+oE=
