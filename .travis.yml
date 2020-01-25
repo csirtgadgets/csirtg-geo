@@ -13,7 +13,7 @@ before_install:
 - echo "UserId $MM_USERID" | sudo tee /etc/GeoIP.conf > /dev/null
 - echo "LicenseKey $MM_LIC" | sudo tee -a /etc/GeoIP.conf > /dev/null
 - echo 'ProductIds GeoLite2-Country GeoLite2-City GeoLite2-ASN' | sudo tee -a /etc/GeoIP.conf > /dev/null
-- geoupdate -v
+- geoipupdate -v
 
 - pip install -r dev_requirements.txt
 script:
