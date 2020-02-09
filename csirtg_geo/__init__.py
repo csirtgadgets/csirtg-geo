@@ -97,7 +97,9 @@ Arguments:
     if not asn:
         return {}
 
-    asn.update(city)
+    if city:
+        asn.update(city)
+
     return asn
 
 
@@ -111,7 +113,3 @@ def main():
 
 if __name__ == "__main__":
     main()
-
-from ._version import get_versions
-__version__ = get_versions()['version']
-del get_versions

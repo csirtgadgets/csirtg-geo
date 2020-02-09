@@ -4,6 +4,7 @@ from csirtg_geo import get as get_geo
 IPS = (
     '128.205.1.1',
     '1.1.1.1',
+    '162.159.44.53'
 )
 
 

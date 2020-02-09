@@ -20,7 +20,7 @@ if sys.argv[-1] == 'test':
         raise ImportError(msg)
 
     r = os.system('py.test test -sv --cov=csirtg_geo --cov-fail-under=75 '
-                  '--pep8')
+                  '--pycodestyle')
 
     if r == 0:
         sys.exit()
