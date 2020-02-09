@@ -1,6 +1,10 @@
 import os
 import geoip2.database
 
+from ._version import get_versions
+VERSION = get_versions()['version']
+del get_versions
+
 
 DB_SEARCH_PATHS = [
     '/usr/share/GeoIP',
