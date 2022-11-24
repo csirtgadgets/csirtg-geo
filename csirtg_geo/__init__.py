@@ -78,7 +78,7 @@ Arguments:
     :return: dict
     """
 
-    match = re.search(r'^(\S+)\\/\d+$', ip)
+    match = re.search(r'^(\S+)\/\d+$', ip)
     if match:
         ip = match.group(1)
 
