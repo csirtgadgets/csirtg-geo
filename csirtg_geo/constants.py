@@ -5,6 +5,8 @@ from ._version import get_versions
 VERSION = get_versions()['version']
 del get_versions
 
+DB_PATH = os.getenv('CSIRTG_GEO_SEARCH_PATH')
+
 
 DB_SEARCH_PATHS = [
     '/usr/share/GeoIP',
@@ -13,6 +15,9 @@ DB_SEARCH_PATHS = [
     '/var/lib/GeoIP',
     './',
 ]
+
+if DB_PATH:
+    DB_SEARCH_PATHS.insert(0, DB_PATH)
 
 CITY_DB_PATH = 'GeoLite2-City.mmdb'
 ASN_DB_PATH = 'GeoLite2-ASN.mmdb'
